@@ -1,14 +1,11 @@
 pipeline {  
-    agent any  
-    tools{
-       maven 'maven-3.9.0' 
-    }
-        stages { 
-            stage("build") {  
+    
+       stages { 
+            stage("checkout") {  
            	    steps {  
               	    echo "Build app" 
-                     sh 'mvn clean package'
-              	    echo "app build successfully"  
+                       sh "checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'DevOps_Projects_2', url: 'https://github.com/Apurva14A/onlinebookstore.git']])"
+              	    echo "Repo is successfully cloned"  
               	    }  
          	    }
             
