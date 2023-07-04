@@ -10,7 +10,7 @@ pipeline {
                      }
                post {
                   success {
-                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \' target/*.war\'', followSymlinks: false
+                       archiveArtifacts 'archiveArtifacts artifacts: \'target/*.jar\''
                         }
                      }
                  }
