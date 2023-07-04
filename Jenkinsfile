@@ -1,9 +1,5 @@
 pipeline {  
     agent any
-
-       tools {
-        // Define the Maven installation
-        maven 'maven-3.9.2'
     }
     
     
