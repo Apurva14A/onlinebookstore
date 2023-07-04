@@ -16,11 +16,8 @@ pipeline {
                  }
            stage('Test') {
             steps {
-                /* `make check` returns non-zero on test failures,
-                * using `true` to allow the Pipeline to continue nonetheless
-                */
                 sh 'mvn test'
-                junit '**/target/*.xml'
+                echo "Test is successful for ${env.BUILD_ID}"
             
             }
         }
