@@ -15,7 +15,7 @@ pipeline {
                 * using `true` to allow the Pipeline to continue nonetheless
                 */
                 sh 'mvn test'
-                junit '**/build/test-reports/*.xml'
+                junit '**/target/*.xml'
             
             }
         }
