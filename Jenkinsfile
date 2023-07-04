@@ -8,6 +8,11 @@ pipeline {
                    sh 'mvn clean compile'
                     echo "Build is successful"
                      }
+               post {
+                  success {
+                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \' target/*.war\'', followSymlinks: false
+                        }
+                     }
                  }
            stage('Test') {
             steps {
