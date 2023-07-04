@@ -6,7 +6,7 @@ pipeline {
                 steps {
                     echo "build app"
                    sh 'mvn clean package'
-                    echo "Build is successful"
+                    echo "Build is successful for ${env.BUILD_ID}"
                      }
                post {
                   success {
