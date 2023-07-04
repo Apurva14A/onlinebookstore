@@ -10,7 +10,7 @@ pipeline {
                      }
                post {
                   success {
-                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \'target/*.jar\'', onlyIfSuccessful: true
+                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \'target/*.war\'', onlyIfSuccessful: true
                         }
                      }
                  }
