@@ -10,7 +10,7 @@ pipeline {
                      }
                post {
                   success {
-                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \'target/*.war\'', onlyIfSuccessful: true
+                       archiveArtifacts artifacts: 'archiveArtifacts artifacts: \'build-pipeline-online-bookStore/target/*.war\'', onlyIfSuccessful: true
                         }
                      }
                  }
