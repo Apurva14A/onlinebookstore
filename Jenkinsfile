@@ -1,12 +1,14 @@
 pipeline {  
     agent any
-    
+    options {
+         buildDiscarder(logRotator(numToKeepStr: '2'))
+       }
+
        stages { 
            stage('Build') {
                 steps {
                     echo "build app"
-                   sh 'mvn clean package site surefire-report:report'
-                   sh 'tree'
+                   sh 'mvn clean package'
                     echo "Build is successful for ${env.BUILD_ID}"
                      }
                post {
