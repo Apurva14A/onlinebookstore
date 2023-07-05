@@ -5,7 +5,7 @@ pipeline {
            stage('Build') {
                 steps {
                     echo "build app"
-                   sh 'mvnw clean install site surefire-report:report'
+                   sh 'mvn clean install site surefire-report:report'
                    sh 'tree'
                     echo "Build is successful for ${env.BUILD_ID}"
                      }
