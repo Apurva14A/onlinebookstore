@@ -1,0 +1,38 @@
+# Exclude version control files
+.git
+.gitignore
+.svn
+
+# Exclude build artifacts
+target/
+build/
+.gradle/
+
+# Exclude IDE specific files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Exclude logs and other temporary files
+logs/
+*.log
+*.tmp
+*.swp
+
+# Exclude OS-specific files
+.DS_Store
+Thumbs.db
+
+# Exclude database files
+*.db
+*.sqlite
+
+# Exclude test and documentation files
+test/
+tests/
+doc/
+docs/
+
+# Exclude any other unnecessary files or directories
+.md
