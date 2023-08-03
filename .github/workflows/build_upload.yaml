@@ -37,4 +37,4 @@ jobs:
         with:
          name: book
          path: staging
-         run: aws s3 cp staging/book.war s3://onlinebookstore-artifacts/onlinebookstore
+         run: aws s3 cp staging/*.war s3://onlinebookstore-artifacts/onlinebookstore
