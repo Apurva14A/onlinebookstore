@@ -17,7 +17,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - run: mvn --batch-mode --update-snapshots verify
-      - run: mkdir staging && cp target/onlinebookstore.war staging
 
   upload-to-s3:
     needs: build
@@ -36,5 +35,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
          name: onlinebookstore
-         path: staging
-         run: aws s3 cp staging/*.war s3://onlinebookstore-artifacts/onlinebookstore
+         path: target/**
+         run: aws s3 cp target/*.war s3://onlinebookstore-artifacts/onlinebookstore
