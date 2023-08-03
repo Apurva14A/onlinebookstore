@@ -12,9 +12,12 @@ jobs:
       with:
        java-version: '17'
        distribution: 'temurin'
+       cache: maven
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.war staging
     - uses: actions/upload-artifact@v3
       with:
-       name: OnlineBookStore
+       name: book
        path: staging
+       run: aws s3 cp staging/book.war s3://onlinebookstore-artifacts/onlinebookstore
+    

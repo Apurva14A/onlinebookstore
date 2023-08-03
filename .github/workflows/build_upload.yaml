@@ -15,6 +15,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
       - run: mvn --batch-mode --update-snapshots verify
       - run: mkdir staging && cp target/*.war staging
 
@@ -23,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/upload-artifact@v3
       - name: Install AWS CLI
         run: sudo apt-get install -y awscli
 
@@ -33,6 +35,6 @@ jobs:
           aws configure set default.region ap-south-1
 
       - name: Upload artifact to S3
-        run: aws s3 cp staging/*.war s3://onlinebookstore-artifacts/onlinebookstore
+        run: aws s3 cp staging/book.war s3://onlinebookstore-artifacts/onlinebookstore
 
       
