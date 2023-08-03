@@ -17,6 +17,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - run: mvn --batch-mode --update-snapshots verify
+      
 
   upload-to-s3:
     needs: build
@@ -35,5 +36,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
          name: onlinebookstore
-         path: /home/runner/work/onlinebookstore/onlinebookstore/target/
-         run: aws s3 cp /home/runner/work/onlinebookstore/onlinebookstore/target/*.war s3://onlinebookstore-artifacts/onlinebookstore
+         path: target
+         run: aws s3 cp target/onlinebookstore.war s3://onlinebookstore-artifacts/onlinebookstore
