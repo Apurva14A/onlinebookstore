@@ -14,14 +14,6 @@ jobs:
        distribution: 'temurin'
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.war staging
-
-    - name: Configure AWS credentials
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set default.region ap-south-1
-
-
     - uses: actions/upload-artifact@v3
       with:
        name: OnlineBookStore
