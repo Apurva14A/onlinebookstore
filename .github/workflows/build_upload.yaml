@@ -16,6 +16,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - run: mvn --batch-mode --update-snapshots verify
+      - run: mkdir staging && cp target/*.war staging
 
   upload-to-s3:
     needs: build
@@ -32,6 +33,6 @@ jobs:
           aws configure set default.region ap-south-1
 
       - name: Upload artifact to S3
-        run: aws s3 cp target/*.war s3://onlinebookstore-artifacts/onlinebookstore
+        run: aws s3 cp staging/*.war s3://onlinebookstore-artifacts/onlinebookstore
 
       
