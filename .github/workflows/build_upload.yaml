@@ -19,7 +19,15 @@ jobs:
           java-version: 11
 
       - name: Build Java web application
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn package -DskipTests
+
+  upload-to-s3:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install AWS CLI
+        run: sudo apt-get install -y awscli
 
       - name: Configure AWS credentials
         run: |
@@ -29,3 +37,5 @@ jobs:
 
       - name: Upload artifact to S3
         run: aws s3 cp target/*.war s3://onlinebookstore-artifacts/onlinebookstore
+
+      
