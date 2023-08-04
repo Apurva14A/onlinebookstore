@@ -1,44 +1,4 @@
-# name: Build and Upload Artifact
-
-# on:
-#   push:
-#     branches:
-#       - master
-
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-java@v3
-#         with:
-#           java-version: '17'
-#           distribution: 'temurin'
-#           cache: maven
-#       - run: mvn --batch-mode --update-snapshots verify
-      
-#       - name: Install AWS CLI
-#         run: sudo apt-get install -y awscli
-
-#       - name: Configure AWS credentials
-#         run: |
-#           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws configure set default.region ap-south-1
-
-#       - name: Upload to S3
-#         uses: aws-actions/amazon-s3-upload-action@v1
-#         with:
-#          aws-region: 'ap-south-1'  # Change this to your desired AWS region
-#          bucket-name: onlinebookstore
-#          path: target/onlinebookstore.war  # Change this to the path of your generated WAR file
-#          object-name: onlinebookstore.war  # The name to use for the uploaded object in the S3 bucket
-
-#-----------------------------------------------------------------------------------------------------------------------------------------------
-
-
-name: Build, Test, and Package
+name: Build and Upload Artifact
 
 on:
   push:
@@ -50,29 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+      - run: mvn --batch-mode --update-snapshots verify
+      
+      - name: Install AWS CLI
+        run: sudo apt-get install -y awscli
 
-      - name: Build with Maven
-        run: mvn package
-
-      - name: Test with Maven
-        run: mvn test
-
-      - name: Archive artifacts
+      - name: Configure AWS credentials
         run: |
-          mkdir artifacts
-          mv target/*.war artifacts/
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region ap-south-1
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+      - name: Upload to S3
+        uses: aws-actions/amazon-s3-upload-action@v1
         with:
-          name: onlinebookstore
-          path: artifacts
+         aws-region: 'ap-south-1'  # Change this to your desired AWS region
+         bucket-name: onlinebookstore
+         path: target/onlinebookstore.war  # Change this to the path of your generated WAR file
+         object-name: onlinebookstore.war  # The name to use for the uploaded object in the S3 bucket
+
 
