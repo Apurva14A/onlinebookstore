@@ -41,4 +41,10 @@ jobs:
       - name: Test the arifacts
         run: ls -R
 
+      - name: archieve artifacts
+        uses: thedoctor0/zip-release@0.7.1
+        with:
+          type: 'zip'
+          filename: 'onlinebookstore.zip'
+
   
