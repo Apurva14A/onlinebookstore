@@ -32,7 +32,7 @@ jobs:
         with:
          aws-region: 'ap-south-1'  # Change this to your desired AWS region
          bucket-name: onlinebookstore
-         path: target/onlinebookstore.war  # Change this to the path of your generated WAR file
+         path: onlinebookstore/target/onlinebookstore.war  # Change this to the path of your generated WAR file
          object-name: onlinebookstore.war  # The name to use for the uploaded object in the S3 bucket
 
 
