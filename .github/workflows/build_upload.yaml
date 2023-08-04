@@ -43,7 +43,7 @@ name: Build, Test, and Package
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
