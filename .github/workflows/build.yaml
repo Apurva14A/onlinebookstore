@@ -48,11 +48,11 @@ jobs:
           filename: 'onlinebookstore.zip'
 
       - name: Create a release
-        uses: actions/create-release@v1
+        uses: action-pack/github-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number}} 
-          release_name: Release ${{ github.run_number }}
+          tag: ${{ github.run_number}} 
+          title: Release ${{ github.run_number }}
           
 
