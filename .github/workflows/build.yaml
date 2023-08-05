@@ -53,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag: ${{ github.run_number}} 
-          title: Release ${{ github.run_number }}
+          title: Release ${{ github.ref }}
           
 
