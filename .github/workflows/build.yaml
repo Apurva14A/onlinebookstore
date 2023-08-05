@@ -47,4 +47,12 @@ jobs:
           type: 'zip'
           filename: 'onlinebookstore.zip'
 
-  
+      - name: Create a release
+        uses: action-pack/github-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{ github.run_number}} 
+          title: Release ${{ github.run_number}}
+          
+
