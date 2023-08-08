@@ -37,6 +37,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: onlinebookstore
+          path: staging
 
       - name: Test the arifacts
         run: ls -R
