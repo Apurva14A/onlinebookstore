@@ -19,10 +19,10 @@ jobs:
            distribution: 'temurin'
            cache: maven
         - run: mvn --batch-mode --update-snapshots verify
-        - run: mkdir staging && cp target/*.war staging
+        - run: mkdir staging && cp target/*.war staging/books.war
 
         - name: Image build using Dockerfile
           run :
-               docker build -t aapurva/java-webapps:v1.0.0 ../Dockerfile
+               docker build -t aapurva/java-webapps:v1.0.0 .
 
           

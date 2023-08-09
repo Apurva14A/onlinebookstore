@@ -1,14 +1,20 @@
-# Use an official Tomcat image as the base
-FROM tomcat:9.0-jdk11
+# the first stage of our build will use a maven 3.6.1 parent image
+FROM maven:3.6.1-jdk-8-alpine AS MAVEN_BUILD
 
-# Remove the default Tomcat applications
-RUN rm -rf /usr/local/tomcat/webapps/*
+# copy the pom and src code to the container
+COPY ./ ./
 
-# Copy the .war artifact from the artifacts directory to the Tomcat webapps directory
-COPY ./staging/*.war /usr/local/tomcat/webapps/ROOT.war
+# package our application code
+RUN mvn clean package
 
-# Expose the Tomcat port
-EXPOSE 8080
+# the second stage of our build will use open jdk 8 on alpine 3.9
+FROM  tomcat:8.5
 
-# Start Tomcat
-CMD ["catalina.sh", "run"]
+# Removing files from tomact webapp directory and creating a new directory
+RUN rm -rf /usr/local/tomcat/webapps/* 
+
+# copy only the artifacts we need from the first stage and discard the rest
+COPY --from=MAVEN_BUILD /onlinebookstore/target/*war /usr/local/tomcat/webapps/books.war
+
+# set the startup command to execute the jar
+CMD ["java", "-jar", "/demo.jar"]
