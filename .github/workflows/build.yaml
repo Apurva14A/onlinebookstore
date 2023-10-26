@@ -23,8 +23,8 @@ jobs:
     - run: mvn clean package
     - run: mkdir staging && cp target/onlinebookstore.war staging
 
-    - name: Run tests 
-      run: mvn clean test
+    - name: Run tests and generate code coverage report
+      run: mvn testCoverage
 
 
     - name: upload artifact
