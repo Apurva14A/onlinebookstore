@@ -6,7 +6,7 @@ jobs:
   build-project:
     name: Build Project
     runs-on: ubuntu-latest
-     env:
+    env:
       ACTIONS_STEP_DEBUG: true
 
     steps:
