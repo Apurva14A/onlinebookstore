@@ -24,7 +24,7 @@ jobs:
     - run: mkdir staging && cp target/onlinebookstore.war staging
 
     - name: Run tests and generate code coverage report
-      run: mvn testCoverage
+      run: mvn clean test
 
 
     - name: upload artifact
