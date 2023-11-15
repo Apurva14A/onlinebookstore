@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         // Define the Maven tool with the desired name and version
-        maven 'Maven-3.9.5'
+        maven 'maven-3.9.5'
     }
     options {
          buildDiscarder(logRotator(numToKeepStr: '5'))
