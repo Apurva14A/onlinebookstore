@@ -1,6 +1,6 @@
 name: OnlineBookStoreImageBuild
 
-on: [push]
+on: [pull]
 
 jobs:
     build-image:
