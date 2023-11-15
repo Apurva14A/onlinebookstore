@@ -1,6 +1,6 @@
 name: OnilineBookStore CI
 
-on: [push]
+on: [pull]
 
 jobs:
   build-project:
