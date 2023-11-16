@@ -2,6 +2,9 @@
 .git
 .gitignore
 .svn
+.github/
+*.yaml
+
 
 # Exclude build artifacts
 target/
@@ -36,3 +39,6 @@ docs/
 
 # Exclude any other unnecessary files or directories
 .md
+Jenkinsfile
+.dockerignore
+scripts/
