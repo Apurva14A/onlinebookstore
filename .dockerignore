@@ -38,7 +38,8 @@ doc/
 docs/
 
 # Exclude any other unnecessary files or directories
-.md
+*.md
 Jenkinsfile
 .dockerignore
 scripts/
+Dockerfile
