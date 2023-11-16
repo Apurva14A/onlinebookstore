@@ -15,6 +15,12 @@ pipeline {
                    sh 'mvn clean package'
                     echo "Build is successful for ${env.BUILD_ID}"
                      }         
+                 post {
+                  success {
+                       archiveArtifacts artifacts: 'target/*.war', fingerprint: true
+                        }
+                     }
+
                  }
            stage('Static Code Analysis') {
                 environment {
