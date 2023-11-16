@@ -32,6 +32,7 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                    }
                      }
+           }
 
           stage('Build and Push Docker Image') {
                  environment {
