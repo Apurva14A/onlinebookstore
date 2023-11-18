@@ -1,6 +1,6 @@
 pipeline {  
     agent any
-    }
+    
     tools {
         // Define the Maven tool with the desired name and version
         maven 'maven-3.9.5'
