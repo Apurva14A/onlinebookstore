@@ -1,9 +1,15 @@
 pipeline {  
-    agent any
+    agent {
+     docker {
+       image "aapurva/jenkins-build-image:v1"
+       args "--user root -v /var/run/docker.sock:/var/run/docker.sock"
+    }
+    }
     tools {
         // Define the Maven tool with the desired name and version
         maven 'maven-3.9.5'
     }
+    
     options {
          buildDiscarder(logRotator(numToKeepStr: '5'))
        }
