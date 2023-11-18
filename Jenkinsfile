@@ -1,7 +1,7 @@
 pipeline {  
     agent {
      docker {
-       image "aapurva/jenkins-build-image:v1"
+       image "aapurva/jenkins-build-agent:v1"
        args "--user root -v /var/run/docker.sock:/var/run/docker.sock"
     }
     }
