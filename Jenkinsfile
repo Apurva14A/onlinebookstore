@@ -1,9 +1,5 @@
 pipeline {  
-    agent {
-     docker {
-       image "aapurva/jenkins-build-agent:v1"
-       args "--user root -v /var/run/docker.sock:/var/run/docker.sock"
-    }
+    agent any
     }
     tools {
         // Define the Maven tool with the desired name and version
